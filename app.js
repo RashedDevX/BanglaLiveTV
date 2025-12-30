@@ -51,7 +51,7 @@ const channels = [
 
     { id: 23, name: "SONY TV", url: "http://cors.tundracast.com:2000/https://streamer2.nexgen.bz/SONYMAX/index.m3u8", category: "News", logo: "https://upload.wikimedia.org/wikipedia/en/d/de/Sony_TV_new.png" },
 
-    { id: 24, name: "Yrf Music", url: "http://cors.tundracast.com:2000/https://streamer2.nexgen.bz/SONYMAX/index.m3u8", category: "News", logo: "https://i.postimg.cc/RZndZDQp/download.png" },
+    { id: 24, name: "Yrf Music", url: "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01412-xiaomiasia-yrfmusic-xiaomi/playlist.m3u8", category: "News", logo: "https://i.postimg.cc/RZndZDQp/download.png" },
 
     { id: 25, name: "BBC News", url: "https://cdn4.skygo.mn/live/disk1/BBC_News/HLSv3-FTA/BBC_News-avc1_3000000=8-mp4a_208000_eng=2.m3u8", category: "News", logo: "https://download.logo.wine/logo/BBC_News/BBC_News-Logo.wine.png" },
 
