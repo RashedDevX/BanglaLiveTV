@@ -1,0 +1,567 @@
+:root {
+    --bg-dark: #0a0b10;
+    --card-bg: #1a1c24;
+    --accent-gradient: linear-gradient(135deg, #00d4ff 0%, #0052ff 100%);
+    --hero-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --nav-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    padding-bottom: var(--nav-height);
+    overflow-x: hidden;
+}
+
+/* Header */
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 11, 16, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #00d4ff;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-box {
+    flex: 1;
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    outline: none;
+    width: 100%;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Views */
+.view {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Section */
+.hero-card {
+    background: var(--hero-gradient);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.badge {
+    background: #ff3b3b;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.hero-card h1 { margin: 10px 0 5px; }
+.hero-card p { color: #e0e0e0; margin-bottom: 15px; font-size: 0.9rem; }
+
+.btn-primary {
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Channel Grid */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header a { color: #00d4ff; text-decoration: none; font-size: 0.9rem; }
+
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.channel-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.channel-card:active { transform: scale(0.95); }
+
+.channel-card .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: var(--bg-dark);
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #00d4ff;
+    border: 2px solid #00d4ff;
+}
+
+/* Player View */
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+video { width: 100%; height: 100%; }
+
+.player-info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.live-indicator {
+    color: #ff3b3b;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #ff3b3b;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Bottom Nav */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: #12141d;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.nav-item ion-icon { font-size: 1.5rem; margin-bottom: 4px; }
+
+.nav-item.active {
+    color: #00d4ff;
+}
+
+/* Desktop Responsiveness */
+@media (min-width: 768px) {
+    .channel-grid { grid-template-columns: repeat(4, 1fr); }
+    .app-header { flex-direction: row; justify-content: space-between; padding: 20px 5%; }
+    .view { padding: 20px 5%; }
+    .hero-card { padding: 50px 40px; }
+}
+
+:root {
+    /* নতুন প্রিমিয়াম কালার প্যালেট */
+    --bg-main: #0f172a; /* Deep Navy Blue */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --accent: #38bdf8; /* Cyan Blue */
+    --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); /* Purple-Indigo */
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --nav-height: 75px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    color: var(--text-main);
+    padding-bottom: var(--nav-height);
+    min-height: 100vh;
+}
+
+/* Header Re-design */
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.85); /* Deep Navy with transparency */
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 850;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 18px;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.search-box:focus-within {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.search-box input::placeholder {
+    color: #64748b;
+}
+
+.icon-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.2s;
+}
+
+.icon-btn:active {
+    transform: scale(0.9);
+}
+
+.notification-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background: #ff3b3b;
+    border-radius: 50%;
+    border: 2px solid #0f172a;
+}
+
+/* modern card design */
+.channel-card {
+    background: var(--glass-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.channel-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient);
+    margin: 0 auto 12px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* Video Player */
+.video-container {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-radius: 24px;
+}
+
+/* Bottom Nav Glass */
+.bottom-nav {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+    color: var(--accent);
+}
+
+/* Custom Player Styling */
+.video-wrapper {
+    transition: all 0.4s ease;
+    width: 100%;
+}
+
+.video-wrapper.theater {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.video-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+}
+
+.custom-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.video-container:hover .custom-controls {
+    opacity: 1;
+}
+
+.bottom-controls, .main-btns, .right-btns {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.bottom-controls {
+    justify-content: space-between;
+}
+
+.ctrl-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* আধুনিক ড্রপডাউন ডিজাইন */
+.res-select {
+    appearance: none; /* ডিফল্ট ব্রাউজার অ্যারো রিমুভ */
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 8px 30px 8px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 18px;
+}
+
+.res-select:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+/* ড্রপডাউন ওপেন হলে অপশনগুলোর ডিজাইন */
+.res-select option {
+    background-color: #1a1c24; /* ডার্ক ব্যাকগ্রাউন্ড */
+    color: white;
+    padding: 12px;
+}
+
+/* কন্ট্রোল বারটিকে আরও সুন্দর করতে */
+.right-btns {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.volume-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+#volumeSlider {
+    width: 60px;
+    accent-color: var(--accent);
+}
+
+/* Update this in your style.css */
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: var(--glass-bg);
+    margin: 0 auto 12px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    overflow: hidden; /* ইমেজ বাইরে গেলে কেটে যাবে */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.channel-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* লোগোর রেশিও ঠিক রাখবে */
+    padding: 10px; /* লোগোর চারপাশে গ্যাপ দিবে */
+    background: white; /* লোগো যদি পিএনজি হয় তবে সাদা ব্যাকগ্রাউন্ডে ভালো দেখাবে */
+}
